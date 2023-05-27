@@ -1,0 +1,24 @@
+services:
+  gitea:
+    image: gitea/gitea:nightly-linux-amd64
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    restart: always
+    ports:
+      - '3000:3000'
+      - '222:22'
+    volumes:
+      - gitea-data:/data
+  jenkins:
+    build: ./jenkins/
+    restart: on-failure
+    ports:
+      - '8080:8080'
+      - '50000:5000'
+    volumes:
+      - jenkins-data:/var/jenkins_home
+
+volumes:
+  gitea-data:
+  jenkins-data:
