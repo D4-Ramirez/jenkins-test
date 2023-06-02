@@ -8,4 +8,4 @@ RUN npm install
 COPY src .
 RUN npm run build
 
-CMD [ "node", "src/index.js" ]
+CMD [ "npm", "start"]
