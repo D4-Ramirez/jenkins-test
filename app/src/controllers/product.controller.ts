@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import Product from "../models/Product";
 
-export async function getAllProducts(req: Request, res: Response) {
+export async function findAllProducts(res: Response) {
     const products = await Product.find();
     res.json(products);
 }
 
-export async function getProductById(req: Request, res: Response) {
+export async function findProductById(req: Request, res: Response) {
     const product = await Product.findById(req.params.id);
     res.json(product);
 }
