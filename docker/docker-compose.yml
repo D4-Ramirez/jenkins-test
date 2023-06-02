@@ -14,10 +14,13 @@ services:
     build: ./jenkins/
     restart: on-failure
     ports:
-      - '8080:8080'
+      - '8081:8080'
       - '50000:5000'
     volumes:
       - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    group_add: 
+      - '998'
 
 volumes:
   gitea-data:

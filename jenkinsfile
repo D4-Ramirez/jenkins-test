@@ -1,11 +1,15 @@
 pipeline {
-    agent {
-        docker { image 'node:18.16.0-alpine' }
-    }
+    agent any
+    
     stages {
-        stage('Build') {
+        stage('Test feature branch') {
+            when {
+                branch pattern: "feature/*", comparator: "REGEXP"
+            }
             steps {
-                echo 'Building'
+                checkout scm
+
+                sh 'npm run test'
             }
         }
         stage('Test') {

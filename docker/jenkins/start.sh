@@ -1,4 +1,4 @@
-#!/bin/ash
+#!/bin/sh
 
 if [ ! -f /var/jenkins_home/.ssh/id_rsa ]; then 
     yes | ssh-keygen -t rsa -q -N "" -f /var/jenkins_home/.ssh/id_rsa
